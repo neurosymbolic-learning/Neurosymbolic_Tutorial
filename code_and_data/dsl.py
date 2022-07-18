@@ -466,12 +466,39 @@ class AffineFeatureSelectionFunction(AffineFunction):
         remaining_features = batch[:,self.full_feature_dim:]
         return self.linear_layer(torch.cat([features, remaining_features], dim=-1))
 
+class NeuralFeatureSelectionFunction(LibraryFunction):
+
+    def __init__(self, input_size, output_size, num_units, name="NeuralFeatureSelection", device="cpu"):
+
+        self.feature_tensor = torch.arange(input_size)
+        self.feature_tensor = self.feature_tensor.to(device)
+        self.custom_nn = True
+        hidden_dim = 32
+
+        self.model = nn.Sequential(
+               nn.Linear(input_size,hidden_dim),
+               nn.ReLU(),
+               nn.Linear(hidden_dim,output_size)).to(device)
+
+        # def __init__(self, submodules, input_type, output_type, input_size, 
+        #              output_size, num_units, name="", has_params=False, device="cpu"):
+
+        super().__init__({}, 'atom', 'atom', input_size, output_size, 
+                         num_units=num_units, name=name, device=device)
+
+    def execute_on_batch(self, batch, batch_lens=None):
+        assert len(batch.size()) == 2
+        features = torch.index_select(batch, 1, self.feature_tensor)
+
+        return self.model(features)
+
 class FullInputAffineFunction(AffineFeatureSelectionFunction):
 
     def __init__(self, input_size, output_size, num_units, device="cpu"):
         self.full_feature_dim = 0 # this will indicate additional_inputs = 0 in FeatureSelectionFunction
         self.feature_tensor = torch.arange(input_size) # selects all features by default
         super().__init__(input_size, output_size, num_units, name="FullFeatureSelect", device=device)
+
 
 class RunningAverageFunction(LibraryFunction):
     """Computes running average over a window, then applies an Atom2AtomModule on the average."""
@@ -741,7 +768,7 @@ class MorletFilterOp(SymmetricFilterOp):
 
     def get_mor_filter(self, xvals, s, w):
         """Implements the Morlet Filter by applying the wavelet function 
-        psi (defined on slide 78 of Lecture 5) to xvals 
+        psi to xvals 
         
         Make sure to return the results with shape [seq_len, 1] instead 
         of [seq_len]. view() or reshape(), as well as math functions in 
@@ -871,7 +898,6 @@ DSL_DICT = {('list', 'list') : [MapFunction, SimpleITE],
                     CALMS21AxisRatioSelection, CALMS21OverlapBboxesSelection,
                     CALMS21MinResNoseKeypointDistSelection]}
 
-
 # If not updated, the default cost is based on the number of neural modules 
 # in the function
 CUSTOM_EDGE_COSTS = {
@@ -896,6 +922,22 @@ DSL_DICT_MOR = {('list', 'list') : [MapFunction, SimpleITE],
                     CALMS21AccelerationSelection, CALMS21RelAngleSocialSelection, \
                     CALMS21AxisRatioSelection, CALMS21OverlapBboxesSelection,
                     CALMS21MinResNoseKeypointDistSelection]}
+
+
+# # DSL with Neural Module
+# 
+# Create a new DSL called DSL_DICT_NEUROSYM which replaces feature selects with learning a neural module over all features.
+
+# In[ ]:
+
+
+DSL_DICT_NEUROSYM = {('list', 'list') : [MapFunction, SimpleITE],
+                        ('list', 'atom') : [OrFunction, AndFunction, MorletFilterOp],
+('atom', 'atom') : [SimpleITE, CALMS21ResAngleHeadBodySelection, \
+                    CALMS21SpeedSelection, CALMS21TangentialVelocitySelection, \
+                    CALMS21AccelerationSelection, CALMS21RelAngleSocialSelection, \
+                    CALMS21AxisRatioSelection, CALMS21OverlapBboxesSelection,
+                    CALMS21MinResNoseKeypointDistSelection, NeuralFeatureSelectionFunction]}
 
 
 # # DSL with Asymmetric Morlet Filter

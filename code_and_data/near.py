@@ -177,6 +177,7 @@ def print_program(program, ignore_constants=True):
         collected_names = []
         for submodule, functionclass in program.submodules.items():
             collected_names.append(print_program(functionclass, ignore_constants=ignore_constants))
+        # log_and_print(program.has_params)
         if program.has_params:
             parameters = "params: {}".format(program.parameters.values())
             if not ignore_constants:
@@ -209,6 +210,8 @@ def init_optimizer(program, optimizer, lr):
             all_params.append({'params': list(current_function.parameters.values()), 'lr': lr})
             for submodule, functionclass in current_function.submodules.items():
                 queue.append(functionclass)
+        elif 'custom_nn' in current_function.__dict__ and current_function.custom_nn:
+            all_params.append({'params' : current_function.model.parameters(),'lr' : lr})
         else:
             for submodule, functionclass in current_function.submodules.items():
                 queue.append(functionclass)
@@ -865,18 +868,11 @@ class ENUMERATION(ProgramLearningAlgorithm):
         for program_dict in top_programs_list:
             # retrain each program
             candidate = program_dict["program"]
-            # log_and_print('Retraining program: ' + print_program(candidate, ignore_constants=(not verbose)))
-            # final_score = execute_and_train(candidate, validset, trainset, train_config,
-            #                                 graph.output_type, graph.output_size, neural=False, second=True,
-            #                                 device=device)
             program_dict["program"] = copy.deepcopy(candidate)
-            # if final_score is not None:
-            #     program_dict["score"] = final_score
-            #     program_dict["path_cost"] = program_dict["score"] + program_dict["struct_cost"]
         top_programs_list.sort(key=lambda i: i['path_cost'], reverse=True)
         log_and_print("Total time elapsed is {:.3f}".format(time.time() - start_time))
         return top_programs_list
-        # return best_programs_list
+
 
     def enumerate2depth(self, graph, enumeration_depth):
         max_depth_copy = graph.max_depth

@@ -11,7 +11,7 @@ from near import ASTAR_NEAR, IDDFS_NEAR, ENUMERATION,\
                  ProgramGraph, \
                  test_set_eval, prepare_datasets, label_correctness, \
                  init_logging, print_program_dict, log_and_print
-from dsl import DSL_DICT, DSL_DICT_MOR, DSL_DICT_ASYM_MOR, CUSTOM_EDGE_COSTS
+from dsl import DSL_DICT, DSL_DICT_MOR, DSL_DICT_NEUROSYM, DSL_DICT_ASYM_MOR, CUSTOM_EDGE_COSTS
 
 
 def parse_args():
@@ -54,7 +54,7 @@ def parse_args():
 
     # Args for program graph
     parser.add_argument('--dsl_str', type=str, required=False, default="default",
-                        choices=["default", "morlet", "asym_morlet"],
+                        choices=["default", "morlet", "asym_morlet", "neurosym"],
                         help='indicates which DSL to use ')
     parser.add_argument('--max_num_units', type=int, required=False, default=16,
                         help="max number of hidden units for neural programs")
@@ -207,6 +207,8 @@ if __name__ == '__main__':
     dsl_dict = None
     if args.dsl_str == "default":
         dsl_dict = DSL_DICT
+    elif args.dsl_str == "neurosym":
+        dsl_dict = DSL_DICT_NEUROSYM
     elif args.dsl_str == "morlet":
         dsl_dict = DSL_DICT_MOR
     elif args.dsl_str == "asym_morlet":
