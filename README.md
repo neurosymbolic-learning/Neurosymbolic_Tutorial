@@ -6,7 +6,7 @@ This is the material used in the three morning tutorials of the [Neurosymbolic S
 
 ## Setup
 
-You will need Google Colab and a directory to access `code_and_data` from Colab. The data can be downloaded from this public Google drive link: https://drive.google.com/drive/folders/1TS9DPhtpe4oSjA3TJ65niHU7ICNCPXXj?usp=sharing to be placed inside `code_and_data`. For example, the current code assumes the training data is in the path `code_and_data/data/calms21_task1/train_data.npy`.
+You will need Google Colab and a directory to access `code_and_data` from Colab. The data can be downloaded from this public Google drive link: https://drive.google.com/drive/folders/1TS9DPhtpe4oSjA3TJ65niHU7ICNCPXXj?usp=sharing to be placed inside `code_and_data/data`. For example, the current code assumes the training data is in the path `code_and_data/data/calms21_task1/train_data.npy`.
 
 ## Session 1 
 
