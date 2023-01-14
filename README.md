@@ -6,7 +6,7 @@ This is the material used in the [Neurosymbolic Summer School 2022](http://www.n
 
 ## Setup
 
-This tutorial is divided into three Jupyter notebooks that we will run on Google Colab. **If you do not wish to save progrees, no setup is required. Head over to [Notebook 1](neurosymbolic_notebook1.ipynb) to get started!**
+This tutorial is divided into three Jupyter notebooks that we will run on Google Colab. **If you do not wish to save progress, no setup is required. Head over to [Notebook 1](neurosymbolic_notebook1.ipynb) to get started!**
 
 ### (Optional) Setup on Google Drive
 
