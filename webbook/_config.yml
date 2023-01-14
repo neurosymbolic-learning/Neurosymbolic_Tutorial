@@ -1,0 +1,35 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: Neurosymbolic Programming Tutorials
+author: Neurosymbolic Team (neurosymbolic.org)
+
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks: 'off'
+
+# Information about where the book exists on the web
+# jq -M 'del(.metadata.widgets)' neurosymbolic_notebook1.ipynb > neurosymbolic_notebook1.ipynb;
+# jq -M 'del(.metadata.widgets)' neurosymbolic_notebook2.ipynb > neurosymbolic_notebook2.ipynb;
+# jq -M 'del(.metadata.widgets)' neurosymbolic_notebook3.ipynb > neurosymbolic_notebook3.ipynb
+repository:
+  url: https://github.com/neurosymbolic-learning/Neurosymbolic_Tutorial  # Online location of your book
+  path_to_book: webbook  # Optional path to your book, relative to the repository root
+  branch: popl23  # Which branch of the repository should be used when creating links (optional)
+
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+html:
+  use_issues_button: true
+  use_repository_button: true
+
+parse:
+  myst_enable_extensions:
+    # don't forget to list any other extensions you want enabled,
+    # including those that are enabled by default!
+    - html_image
+
+launch_buttons:
+  colab_url: "https://colab.research.google.com"
+  binderhub_url: ""
