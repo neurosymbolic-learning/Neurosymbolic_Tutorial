@@ -6,9 +6,21 @@ This is the material used in the [Neurosymbolic Summer School 2022](http://www.n
 
 ## Setup
 
-You will need Google Colab and a directory to access `code_and_data` from Colab. If you wish to save your work, we recommend [downloading this compressed repository from GitHub, unzipping it, uploading it to Google Drive, opening this notebook from within Google Drive, and setting `WITHIN_GDRIVE` to `True` in all notebooks.
+This tutorial is divided into three Jupyter notebooks that we will run on Google Colab. **If you do not wish to save progrees, no setup is required. Head over to [Notebook 1](neurosymbolic_notebook1.ipynb) to get started!**
 
+### (Optional) Setup on Google Drive
+
+If you wish to save your work, we recommend manually copying the provided code to your google drive as shown here:
 ![setup.gif](https://github.com/neurosymbolic-learning/Neurosymbolic_Tutorial/blob/popl23/imgs/setup.gif?raw=true)
+
+Specifically:
+1. Visit the [code repository](https://github.com/neurosymbolic-learning/Neurosymbolic_Tutorial/tree/popl23).
+2. Click on `Code (Green Button)` > `Download ZIP`. A file `Neurosymbolic_Tutorial-popl23.zip` should be downloaded.
+3. Extract the zip file and rename the folder to from `Neurosymbolic_Tutorial-popl23` to `Neurosymbolic_Tutorial`.
+4. Upload the folder to the **root folder** in your Google Drive.
+5. Navigate to `Neurosymbolic_Tutorial/neurosymbolic_notebook{1/2/3}.ipynb`.
+6. Set `WITHIN_GDRIVE` to `True` in the notebook.
+
 
 ## [Notebook 1](neurosymbolic_notebook1.ipynb)
 
