@@ -8,6 +8,8 @@ This is the material used in the [Neurosymbolic Summer School 2022](http://www.n
 
 You will need Google Colab and a directory to access `code_and_data` from Colab. If you wish to save your work, we recommend [downloading this compressed repository from GitHub, unzipping it, uploading it to Google Drive, opening this notebook from within Google Drive, and setting `WITHIN_GDRIVE` to `True` in all notebooks.
 
+![setup.gif](https://github.com/neurosymbolic-learning/Neurosymbolic_Tutorial/blob/popl23/imgs/setup.gif?raw=true)
+
 ## [Notebook 1](neurosymbolic_notebook1.ipynb)
 
 The goal of this notebook is to provide a walk-through of the data with example code for training neural networks and programs. 

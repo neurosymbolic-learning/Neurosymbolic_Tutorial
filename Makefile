@@ -4,8 +4,9 @@
 # make clean: cleans the webbook and all generated files
 # requires jq and jupyter-book
 
-all: webbook/neurosymbolic_notebook1.ipynb webbook/neurosymbolic_notebook2.ipynb webbook/neurosymbolic_notebook3.ipynb webbook/imgs webbook/README.md
-	jupyter-book build webbook	
+all: webbook/neurosymbolic_notebook1.ipynb webbook/neurosymbolic_notebook2.ipynb webbook/neurosymbolic_notebook3.ipynb webbook/README.md
+	jupyter-book build webbook
+	cp -r webbook/* ../popl23tutorial	
 
 webbook/neurosymbolic_notebook1.ipynb:
 	jq -M 'del(.metadata.widgets)' neurosymbolic_notebook1.ipynb > webbook/neurosymbolic_notebook1.ipynb
@@ -16,9 +17,6 @@ webbook/neurosymbolic_notebook2.ipynb:
 webbook/neurosymbolic_notebook3.ipynb:
 	jq -M 'del(.metadata.widgets)' neurosymbolic_notebook3.ipynb > webbook/neurosymbolic_notebook3.ipynb
 
-webbook/imgs:
-	cp -r imgs webbook/imgs
-
 webbook/README.md:
 	cp README.md webbook/README.md
 
@@ -26,6 +24,5 @@ clean:
 	rm -f webbook/neurosymbolic_notebook1.ipynb
 	rm -f webbook/neurosymbolic_notebook2.ipynb
 	rm -f webbook/neurosymbolic_notebook3.ipynb
-	rm -rf webbook/imgs
 	rm -f webbook/README.md
 	jupyter-book clean webbook --all

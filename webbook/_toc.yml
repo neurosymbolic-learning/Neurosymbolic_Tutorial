@@ -4,12 +4,9 @@
 format: jb-book
 root: README
 chapters:
-- file: notebooks/neurosymbolic_notebook1.ipynb
-  title: Part 1
-- file: notebooks/neurosymbolic_notebook2.ipynb
-  title: Part 2
-- file: notebooks/neurosymbolic_notebook3.ipynb
-  title: Part 3
+- file: neurosymbolic_notebook1.ipynb
+- file: neurosymbolic_notebook2.ipynb
+- file: neurosymbolic_notebook3.ipynb
 - url: http://www.neurosymbolic.org/
   title: Neurosymbolic Website
 
