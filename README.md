@@ -22,7 +22,17 @@ Specifically:
 6. Set `WITHIN_GDRIVE` to `True` in the notebook.
 
 
+## Asking for Help
+
+Feel free to reach out to Atharva Sehgal. You can reach out to me in three ways:
+1. In Person at POPL23: Flag me down any time during the conference!
+2. Via email: Reach out at `atharvas@utexas.edu`. 
+3. Via Github Issues: Open a GitHub Issue [here](https://github.com/neurosymbolic-learning/Neurosymbolic_Tutorial/issues/new) briefly describing the issue and we can try to debug problems together.
+
 ## [Notebook 1](neurosymbolic_notebook1.ipynb)
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/neurosymbolic-learning/Neurosymbolic_Tutorial/blob/popl23/neurosymbolic_notebook1.ipynb)
+
 
 The goal of this notebook is to provide a walk-through of the data with example code for training neural networks and programs. 
 
@@ -37,6 +47,8 @@ The goal of this notebook is to provide a walk-through of the data with example 
 
 ## [Notebook 2](neurosymbolic_notebook2.ipynb)
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/neurosymbolic-learning/Neurosymbolic_Tutorial/blob/popl23/neurosymbolic_notebook2.ipynb)
+
 This notebook walks through top-down type-guided enumeration, one approach for learning neurosymbolic programs.
 
 * Running Enumeration
@@ -48,6 +60,8 @@ This notebook walks through top-down type-guided enumeration, one approach for l
 * Open-Ended Exploration
 
 ## [Notebook 3](neurosymbolic_notebook3.ipynb)
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/neurosymbolic-learning/Neurosymbolic_Tutorial/blob/popl23/neurosymbolic_notebook3.ipynb)
 
 This notebook walks through informed search via [admissible neural heuristics](https://arxiv.org/pdf/2007.12101.pdf) (NEAR), another approach for learning neurosymbolic programs.
 
