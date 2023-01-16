@@ -4,9 +4,14 @@
 # make clean: cleans the webbook and all generated files
 # requires jq and jupyter-book
 
-all: webbook/neurosymbolic_notebook1.ipynb webbook/neurosymbolic_notebook2.ipynb webbook/neurosymbolic_notebook3.ipynb webbook/README.md
-	jupyter-book build webbook
+
+all: webbook
+
+transfer: webbook
 	cp -r webbook/* ../popl23tutorial	
+
+webbook: webbook/neurosymbolic_notebook1.ipynb webbook/neurosymbolic_notebook2.ipynb webbook/neurosymbolic_notebook3.ipynb webbook/README.md
+	jupyter-book build webbook
 
 webbook/neurosymbolic_notebook1.ipynb:
 	jq -M 'del(.metadata.widgets)' neurosymbolic_notebook1.ipynb > webbook/neurosymbolic_notebook1.ipynb
